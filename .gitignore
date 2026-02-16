@@ -1,0 +1,76 @@
+node_modules
+# =====================================
+# ========= FRONTEND (Angular) ========
+# =====================================
+
+frontend/node_modules/
+frontend/.angular/
+frontend/dist/
+frontend/coverage/
+frontend/.cache/
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+frontend/.env
+frontend/.env.*
+frontend/src/environments/*.local.ts
+
+# =====================================
+# ========= BACKEND (Spring Boot) =====
+# =====================================
+
+backend/target/
+backend/.mvn/
+backend/*.log
+backend/*.jar
+backend/*.war
+
+# =====================================
+# ========= General Node ==========
+# =====================================
+
+node_modules/
+.angular/
+dist/
+coverage/
+
+# =====================================
+# ========= IDEs ======================
+# =====================================
+
+.vscode/
+.idea/
+*.iml
+
+# =====================================
+# ========= OS Files ==================
+# =====================================
+
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# =====================================
+# ========= Logs ======================
+# =====================================
+
+logs/
+*.log
+
+# =====================================
+# ========= Build / Temp ==============
+# =====================================
+
+build/
+out/
+tmp/
+temp/
+.cache/
+
+# =====================================
+# ========= Test Artifacts ============
+# =====================================
+
+test-results/
+playwright-report/
+

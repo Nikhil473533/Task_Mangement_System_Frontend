@@ -1,0 +1,8 @@
+Project Name: task-ui
+Angular Version: 21.1.4
+Node Version: 20.19.0
+Standalone Components: Yes
+Routing: Enabled
+SSR: Disabled
+Style: SCSS
+Created via: npx local CLI

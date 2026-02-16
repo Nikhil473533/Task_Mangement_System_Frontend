@@ -1,0 +1,8 @@
+Frontend Architecture Decision:
+
+- Angular 21 (Standalone)
+- Feature-based structure (planned)
+- Reactive Forms
+- HttpClient + Interceptors
+- Signal-based local state
+- Spring Boot backend integration planned

@@ -1,0 +1,32 @@
+<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-wrapper">
+    <div class="login-card">
+    
+      <h2 class="login-title">Welcome Back !</h2>   
+
+        <div class="field">
+            <label>Username:<span class="required">*</span></label>
+            <input pInputText type="text" formControlName="username" id="username" class="w-full">
+            @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched)
+            {
+            <small class="error"> Username is required. </small>
+            }
+        </div>
+
+        <div class="field">
+            <label>Password:<span class="required">*</span></label>
+            <input pInputText type="password" formControlName="password" id="password" class="w-full">
+            @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched)
+            {
+            <small class="error"> password is required. </small>
+            }
+        </div>
+          <div class="button-container">
+            <p-button 
+            type="submit" 
+            label="Login" 
+            severity="primary"
+            styleClass="login-btn"
+            [disabled]="loginForm.invalid"></p-button>
+            </div>
+       </div>
+</form>
