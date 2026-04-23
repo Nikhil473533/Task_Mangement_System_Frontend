@@ -26,8 +26,9 @@ private router = inject(Router);
     if(this.loginForm.invalid) return;
 
     const username = this.loginForm.value.username!;
+    const password = this.loginForm.value.password!;
 
-    this.authService.login(username).subscribe({
+    this.authService.login(username, password).subscribe({
       next: () => 
         this.router.navigate(['/dashboard']),
       error: (err) => 

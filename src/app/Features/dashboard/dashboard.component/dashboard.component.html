@@ -1,1 +1,47 @@
-<p>dashboard.component works!</p>
+<p-card header="Task Details" id="taskdetails">
+
+ 
+  <div class="total-container">
+    <div class="kpi-card warning">
+      <div class="kpi-title">Total Tasks</div>
+      <div class="kpi-value">{{totalCount}}</div>
+    </div>
+  </div>
+
+ 
+  <div class="task-grid">
+    <div class="kpi-card success">
+      <div class="kpi-title">Done</div>
+      <div class="kpi-value">{{doneCount}}</div>
+    </div>
+
+    <div class="kpi-card danger">
+      <div class="kpi-title">Blocked</div>
+      <div class="kpi-value">{{blockedCount}}</div>
+    </div>
+
+    <div class="kpi-card info">
+      <div class="kpi-title">In Progress</div>
+      <div class="kpi-value">{{inProgressCount}}</div>
+    </div>
+
+    <div class="kpi-card info">
+      <div class="kpi-title">Open</div>
+      <div class="kpi-value">{{openCount}}</div>
+    </div>
+  </div>
+
+  
+  <div class="chart-section">
+    <p-card header="My Tasks Overview" class="chart-card">
+      <div class="chart-container">
+        <p-chart 
+          type="bar"
+          [data]="taskChartData"
+          [options]="taskChartOptions">
+        </p-chart>
+      </div>
+    </p-card>
+  </div>
+
+</p-card>

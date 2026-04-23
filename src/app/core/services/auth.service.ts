@@ -9,9 +9,9 @@ export class AuthService {
   
   constructor(private api: ApiService) {}
 
-  login(username: string) : Observable<void> {
+  login(username: string, password: string) : Observable<void> {
     return this.api.post<void>(
-      `/auth/login?username=${username}`,
+      `/auth/login?username=${username}&password=${password}`,
       {}
     );
   }

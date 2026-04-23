@@ -1,0 +1,133 @@
+#taskdetails {
+  padding: 25px;
+  background: #f8fafc;
+}
+
+/* Total */
+.total-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.total-container .kpi-card{
+  width: 260px;
+  background: linear-gradient(135deg, #f59e0b, #fbbf24);
+  color: white;
+}
+
+.total-container .kpi-title {
+  color: rgba(255,255,255,0.8);
+}
+
+.total-container .kpi-value{
+  color: white;
+}
+
+/* Grid */
+.task-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 25px;
+  margin-top: 25 px;
+}
+
+.kpi-card {
+  border-radius: 14px;
+  padding: 18px;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+  transition: all 0.25s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover effect (subtle but premium) */
+.kpi-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+}
+
+.kpi-card::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  // height: 100%;
+  // width: 5px;
+  height: 4px;
+  width: 100%;
+  border-radius: 14px 0 0 14px;
+}
+
+/* Typography */
+.kpi-title {
+  font-size: 13px;
+  color: #888;
+  letter-spacing: 0.5 px;
+}
+
+.kpi-value {
+  font-size: 26px;
+  font-weight: 600;
+  margin-top: 5px;
+}
+
+/* Colors */
+.success::before { background: #22c55e; }
+.warning::before { background: #f59e0b; }
+.info::before    { background: #3b82f6; }
+.danger::before  { background: #ef4444; }
+
+/* Colors with soft background */
+.success {
+  background: rgba(34, 197, 94, 0.1);
+  color: #166534;
+}
+
+.warning {
+  background: rgba(245, 158, 11, 0.15);
+  color: #92400e;
+}
+
+.info {
+  background: rgba(59, 130, 246, 0.1);
+  color: #1e3a8a;
+}
+
+.danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #7f1d1d;
+}
+
+
+/* Chart */
+.chart-section {
+  margin-top: 40px;
+}
+
+.chart-container {
+  width: 100%;
+  height: 450px;
+  padding: 10px;
+}
+
+.chart-card {
+  width: 100%;
+}
+
+.chart-container p-chart {
+  display: block;
+  height: 100%;
+}
+
+.chart-container canvas {
+  height: 100% !important;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .task-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

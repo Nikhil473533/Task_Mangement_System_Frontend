@@ -1,13 +1,13 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-
+import { environment } from '../../../environment/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class ApiService {
   
-     private baseUrl = 'http://localhost:8080';
+     private baseUrl = environment.apiUrl;
 
      private options = {
        withCredentials: true
