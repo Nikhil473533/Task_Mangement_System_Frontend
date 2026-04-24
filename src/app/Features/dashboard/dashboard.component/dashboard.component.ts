@@ -110,7 +110,6 @@ export class DashboardComponent implements OnInit {
           backgroundColor: colors
         }
        ] 
-
      }
  }
 

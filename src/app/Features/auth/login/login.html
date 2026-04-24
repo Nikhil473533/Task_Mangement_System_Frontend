@@ -1,32 +1,74 @@
-<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-wrapper">
-    <div class="login-card">
-    
-      <h2 class="login-title">Welcome Back !</h2>   
+<div class="login-page">
+  <p-toast></p-toast>
 
-        <div class="field">
-            <label>Username:<span class="required">*</span></label>
-            <input pInputText type="text" formControlName="username" id="username" class="w-full">
-            @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched)
-            {
-            <small class="error"> Username is required. </small>
-            }
-        </div>
+  <div class="login-card">
 
-        <div class="field">
-            <label>Password:<span class="required">*</span></label>
-            <input pInputText type="password" formControlName="password" id="password" class="w-full">
-            @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched)
-            {
-            <small class="error"> password is required. </small>
-            }
-        </div>
-          <div class="button-container">
-            <p-button 
-            type="submit" 
-            label="Login" 
-            severity="primary"
-            styleClass="login-btn"
-            [disabled]="loginForm.invalid"></p-button>
-            </div>
-       </div>
-</form>
+    <!-- Icon -->
+    <div class="icon-wrapper">
+      <i class="pi pi-sign-in sigin-icon"></i>
+    </div>
+
+    <!-- Heading -->
+    <h1 class="title">Welcome back!</h1>
+    <p class="subtitle">Please fill the fields to sign-in to the System</p>
+
+    <!-- Form -->
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="login-form">
+
+      <!-- Username -->
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-user"></i>
+        </p-inputGroupAddon>
+        <input
+          pInputText
+          type="text"
+          class="w-full"
+          formControlName="username"
+          placeholder="User Name"
+        />
+      </p-inputGroup>
+
+      @if(loginForm.get('username')?.invalid && loginForm.get('username')?.touched){
+        <small class="error">Username is required</small>
+      }
+
+      <!-- Password -->
+      <p-inputGroup>
+        <p-inputGroupAddon>
+          <i class="pi pi-key"></i>
+        </p-inputGroupAddon>
+        <input
+          pInputText
+          type="password"
+          class="w-full"
+          formControlName="password"
+          placeholder="Password"
+        />
+      </p-inputGroup>
+
+      @if(loginForm.get('password')?.invalid && loginForm.get('password')?.touched){
+        <small class="error">Password is required</small>
+      }
+
+      <!-- Login Button -->
+      <button
+        pButton
+        type="submit"
+        label="LOGIN"
+        class="login-btn"
+        [disabled]="loginForm.invalid"
+      ></button>
+
+      <!-- Forgot Password -->
+      <button
+        pButton
+        type="button"
+        label="FORGOT PASSWORD?"
+        class="forgot-btn p-button-text"
+        (click)="forgotPassword()"
+      ></button>
+
+    </form>
+  </div>
+</div>

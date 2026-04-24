@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
 import { ApiService } from './api.service';
 import { Observable, of, catchError, map } from 'rxjs';
-
+interface ForgotPasswordResponse {
+  token: string;
+}
 @Injectable({
   providedIn: 'root',
 })
@@ -28,4 +30,16 @@ export class AuthService {
       catchError(() => of(false))
     );
   }
+
+  forgotPassword(username: string) : Observable<ForgotPasswordResponse> {
+    return this.api.post<ForgotPasswordResponse>(`/auth/forgot-password?username=${username}`,{});
+  }
+  
+  resetPassword(token: string, newPassword: string) :Observable<string> {
+    return this.api.post<string>(`/auth/reset-password`, { 
+      token,
+      newPassword
+    });
+  }
+
 }

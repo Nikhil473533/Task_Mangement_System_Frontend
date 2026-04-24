@@ -1,23 +1,47 @@
 import { Routes } from '@angular/router';
-import { Login } from './Features/auth/login/login';
-import { authGuard } from './core/guards/auth-guard'; 
+import { authGuard } from './core/guards/auth-guard';
 
 export const routes: Routes = [
 
+    // Public Routes
     {
         path: 'login',
-        component: Login
+        loadComponent: () =>
+            import('./Features/auth/login/login')
+                .then(m => m.Login)
     },
     {
-        path: 'dashboard',
+        path: 'forgot-password',
         loadComponent: () =>
-            import('./Features/dashboard/dashboard.component/dashboard.component')   
-            .then(m => m.DashboardComponent)
+            import('./Features/forgot-password/forgot-password')
+                .then(m => m.ForgotPassword)
     },
+
+    // Protected Routes
     {
         path: '',
-        redirectTo: 'login',
-        pathMatch: 'full'
-    }
+        loadComponent: () =>
+            import('./layout/app-layout/app-layout')
+                .then(m => m.AppLayout)
+        , canActivateChild: [authGuard],
+        children: [
+            {
+                path: 'dashboard',
+                loadComponent: () =>
+                    import('./Features/dashboard/dashboard.component/dashboard.component')
+                        .then(m => m.DashboardComponent)
+            },
+            {
+                path: '',
+                redirectTo: 'dashboard',
+                pathMatch: 'full'
+            },
+        ]
+    },
 
+    //Fallback
+    {
+        path: '**',
+        redirectTo: 'login'
+    }
 ];
