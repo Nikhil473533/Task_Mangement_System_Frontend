@@ -37,8 +37,8 @@ private messageService = inject(MessageService);
 onSubmit() {
 if(this.forgotPasswordForm.invalid) return;
 
-const username = this.forgotPasswordForm.value.username!;
-const newPassword = this.forgotPasswordForm.value.newPassword!;
+const username = this.forgotPasswordForm.value.username ?? '';
+const newPassword = this.forgotPasswordForm.value.newPassword ?? '';
 
 this.authService.forgotPassword(username).pipe(
 

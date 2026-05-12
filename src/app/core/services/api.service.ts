@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { environment } from '../../../environment/environment';
 
 @Injectable({
@@ -15,9 +15,18 @@ export class ApiService {
 
      constructor(private http: HttpClient) {}
 
-        get<T>(url: string) {
-          return this.http.get<T>(`${this.baseUrl}${url}`, this.options);
-        }
+  get<T>(
+  url: string,
+  options?: {
+    params?: HttpParams;
+    headers?: HttpHeaders;
+  }
+) {
+  return this.http.get<T>(`${this.baseUrl}${url}`, {
+    ...this.options,
+    ...options
+  });
+}
 
         post<T>(url: string, body: any) {
           return this.http.post<T>(`${this.baseUrl}${url}`, body, this.options);

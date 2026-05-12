@@ -1,0 +1,55 @@
+.old-value {
+  color: #d9534f; /* red */
+}
+
+.new-value {
+  color: #5cb85c; /* green */
+}
+
+.insert {
+  color: #5cb85c;
+  font-weight: bold;
+}
+
+.update {
+  color: #f0ad4e;
+  font-weight: bold;
+}
+
+.soft_delete {
+  color: #d9534f;
+  font-weight: bold;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr:nth-child(even) {
+  background-color: #fafafa;
+}
+
+:host ::ng-deep .p-datatable .p-datatable-tbody > tr:hover {
+  background-color: #f1f5f9;
+}
+
+:host ::ng-deep .p-datatable thead th {
+  background-color: #eef3f7;
+  font-weight: 600;
+  color: #2c3e50;
+}
+
+:host ::ng-deep .p-sortable-column-icon {
+  font-size: 12px;
+}
+
+.toolbar{
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.date-picker{
+  width: 220px;
+}
+
+.search-input{
+  width: 250px;
+}

@@ -5,6 +5,11 @@ export const routes: Routes = [
 
     // Public Routes
     {
+        path: '',
+        redirectTo: 'login',
+        pathMatch: 'full'
+    },
+    {
         path: 'login',
         loadComponent: () =>
             import('./Features/auth/login/login')
@@ -32,10 +37,11 @@ export const routes: Routes = [
                         .then(m => m.DashboardComponent)
             },
             {
-                path: '',
-                redirectTo: 'dashboard',
-                pathMatch: 'full'
-            },
+                path: 'audit-logs',
+                loadComponent: () =>
+                    import('./Features/audit-log-grid/audit-log-grid')
+                        .then(m => m.AuditLogGrid)
+            }
         ]
     },
 

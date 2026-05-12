@@ -1,0 +1,110 @@
+<div class="toolbar">
+ 
+<!-- Date Range Selector-->
+<p-datepicker 
+[(ngModel)] = "dateRange"
+selectionMode = "range"
+placeholder = "Select Date Range"
+dateFormat = "mm/dd/yy"
+[showIcon] = "true"
+class="date-picker"
+></p-datepicker>
+
+<!-- Global Search -->
+ <input
+ type="text"
+ pInputText
+ [(ngModel)]="globalSearch"
+ placeholder="Search Keyword"
+ class="search-input"
+ />
+
+ <!--Buttons-->
+  <button pButton label="Search" icon="pi pi-search" (click)="onSearch()"></button>
+  <button pButton label="Clear" icon="pi pi-filter-slash" class="p-button-secondary" (click)="onClear()"></button>
+
+</div>
+
+<p-table
+  #dt
+  [value]="auditLogs"
+  [lazy]="true"
+  (onLazyLoad)="lazyLoadData($event)"
+  [paginator]="true"
+  [rows]="10"
+  [totalRecords]="totalRecords"
+  [loading]="loading"
+  [scrollable]="true"
+  scrollHeight="70vh"
+  class="p-datatable-sm"
+>
+
+  <!-- HEADER -->
+  <ng-template pTemplate="header">
+    <tr>
+    <th *ngFor="let col of columns" [pSelectableRow]="col.field">
+      {{ col.header}}
+
+    <p-sortIcon [field]="col.field"></p-sortIcon>
+
+    <p-column-filter 
+     [field]="col.field"
+     [type]="col.type"
+     display="menu"
+    ></p-column-filter>
+    </th>
+
+    <!-- Static columns -->
+    <th>Field</th>
+    <th>Old Value</th>
+    <th>New Value</th>
+
+    </tr>
+  </ng-template>
+
+  <!-- BODY -->
+  <ng-template pTemplate="body" let-row>
+  <tr>
+    <td>{{ row.id }}</td>
+    <td>{{ row.entity_name }}</td>
+    <td [ngClass]="getActionClass(row.action)">{{ row.action }}</td>
+    <td>{{ row.event_time }}</td>
+    <td>{{ row.Field }}</td>
+    <td class="old-value">{{ row.OldValue }}</td>
+    <td class="new-value">{{ row.NewValue }}</td>
+  </tr>
+</ng-template>
+
+  <!-- Loading BODY -->
+<ng-template pTemplate="loadingbody">
+  @for (_ of skeletonRows; track $index) {
+    <tr>
+
+      <td><p-skeleton width="3rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="6rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="5rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="8rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="6rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="8rem" height="1rem"></p-skeleton></td>
+
+      <td><p-skeleton width="8rem" height="1rem"></p-skeleton></td>
+
+    </tr>
+  }
+</ng-template>
+
+  <!-- EMPTY -->
+  <ng-template pTemplate="emptymessage">
+    <tr>
+      <td colspan="7" class="text-center">
+        No Audit Logs Found
+      </td>
+    </tr>
+  </ng-template>
+
+</p-table>
